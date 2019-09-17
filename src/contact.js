@@ -1,15 +1,32 @@
 import React from 'react';
 class Contact extends React.Component {
-  onSubmit = () => {
-    this.props.history.push('/');
+  state = {
+    open: true,
+
+    data: [],
+    loading: false
   };
+
+  componentDidMount() {
+    this.setState({ loading: true });
+    fetch('http://localhost:4000/posts')
+      .then(data => data.json())
+      .then(data => this.setState({ data, loading: false }));
+  }
+
   render() {
     return (
-      <form>
-        <input placeholder="name" type="name" />
-        <input placeholder="email" type="email" />
-        <button onClick={this.onSubmit}>Submit</button>
-      </form>
+      <div>
+        {this.state.data.map(user => {
+          return (
+            <div key={user.id}>
+              <h4>Username : {user.username}</h4>
+              <h4>Name : {user.Name}</h4>
+              <h4>Email : {user.email}</h4>
+            </div>
+          );
+        })}
+      </div>
     );
   }
 }
