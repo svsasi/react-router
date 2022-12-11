@@ -5,7 +5,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors-anywhere": "^0.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
     "mysql": "^2.17.1",
